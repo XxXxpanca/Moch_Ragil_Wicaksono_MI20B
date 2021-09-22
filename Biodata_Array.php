@@ -1,34 +1,32 @@
 <?php     
  $Biodata = array(
-    'Nama' => 'Moch Ragil Wicaksono' , 
-    'Kelas' => 'MI20B' ,
-    'NIK' => '202002077' ,
-    'Alamat' => 'Jl.Tajur indah' ,
+    'Nama' => "Moch Ragil Wicaksono" , 
+    'Kelas' => "MI20B" ,
+    'Email' => "Jamaika belok kiri"
+     );
 
-    );
-  
+$Matkul = array('1.Web programming' ,'2.Database ','3.Design Graphic',);
 ?>
-<html>
+<!DOCTYPE <html>
     <head>
-    
+        <title>BIODATA</title>
     </head>
     <body>
-        <div style ="text-align :center">
-        
+            
         <?php 
-       echo "BIODATA";
-       echo "<br><br>";
-       echo "Nama : " . "<b>" . $Biodata["Nama"] . "</b>";
-       echo "<br>";
-       echo "Kelas : " . "<b>" . $Biodata["Kelas"] . "</b>";
-       echo "<br>";
-       echo "NIK : " . "<b>" . $Biodata["NIK"] . "</b>";
-       echo "<br>";
-       echo "Email : " . "<b>" . $Biodata["Email"] . "</b>";
-
-        ?>        
-    
-        </div>
-       
+        
+        echo "<h2> BIODATA </h2>";
+        echo " Nama : ".$Biodata['Nama'];
+        echo "<br>";
+        echo " Kelas : ".$Biodata['Kelas'];
+        echo "<br>";
+        echo " Alamat : ".$Biodata['Email'];
+        echo "<br><br>";  
+        echo "Saya Mengambil Mata Kuliah Sebagai berikut : <br>";
+        ?> 
+    <?php
+     for($x=0;$x<count($Matkul);$x++){
+        echo $Matkul[$x]."<br/>";}
+    ?>
     </body>
 </html>

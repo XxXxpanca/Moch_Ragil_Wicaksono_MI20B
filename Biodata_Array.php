@@ -5,7 +5,7 @@
     'Email' => "Jamaika belok kiri"
      );
 
-$Matkul = array('1.Web programming' ,'2.Database ','3.Design Graphic',);
+$Matkul = array('Web programming' ,'Database ','Design Graphic',);
 ?>
 <!DOCTYPE <html>
     <head>
@@ -25,8 +25,9 @@ $Matkul = array('1.Web programming' ,'2.Database ','3.Design Graphic',);
         echo "Saya Mengambil Mata Kuliah Sebagai berikut : <br>";
         ?> 
     <?php
-     for($x=0;$x<count($Matkul);$x++){
-        echo $Matkul[$x]."<br/>";}
+     for($i=0;$i < count($Matkul);$i++){
+        echo $i + 1. . '. ' . $Matkul[$i]."<br/>"; 
+    }
     ?>
     </body>
 </html>

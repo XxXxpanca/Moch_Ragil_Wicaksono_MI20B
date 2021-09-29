@@ -16,6 +16,7 @@ $Matkul = array('Web programming' ,'Database ','Design Graphic',);
         <?php 
         
         echo "<h2> BIODATA </h2>";
+        echo "img sr";
         echo " Nama : ".$Biodata['Nama'];
         echo "<br>";
         echo " Kelas : ".$Biodata['Kelas'];

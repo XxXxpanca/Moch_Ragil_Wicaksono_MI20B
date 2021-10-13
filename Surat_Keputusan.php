@@ -36,6 +36,7 @@
 <!DOCTYPE <html>
     <head>
         <title>SURAT</title>
+        
         <style>
             body {
                 padding-left: 350px;
@@ -61,6 +62,7 @@
                 }
             }
         </style>
+
     </head>
     <body>
        <div class="content">     

@@ -28,32 +28,55 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
     </head>
 
     <body>
-     <h1 class="text-center">LIST SURAT</h1>
-
       <div class="container">
-      <table class="table">
+        <div class="card">
+          <div class="card-header bg-white text-uppercase">
+            <div class="h3 text-center">LIST MAHASISWA</div>
+          </div>
+          <div class="card-body">
+
+      <table class="table table-striped w-100">
   <thead>
     <tr>
       <th scope="col">No.Surat</th>
       <th scope="col">Jenis Surat</th>
       <th scope="col">Tgl Surat</th>
       <th scope="col">Ttd Surat</th>
+      <th colspan="2">Action</th>
     </tr>
   </thead>
   <tbody>
     <?php
     foreach ($result as $val){
     ?>
+    <?php
+    if($val["Jenis_Surat"]== '1'){
+      $js = "Surat Keputusan";
+    }
+    else if($val["Jenis_Surat"]== '2'){
+      $js = "Surat Pernyataan";
+    }
+    else if($val["Jenis_Surat"]== '3'){
+      $js = "Surat Peminjaman";
+    }else{
+      $js = "Kode Bermasalah";
+    }
+    ?>
+
     <tr>
       <th><?=$val['No_Surat']?></th>
-      <td><?=$val['Jenis_Surat']?></td>
+      <td><?=$js ?></td>
       <td><?=$val['Tgl_Surat']?></td>
       <td><?=$val['Ttd_Surat']?></td>
+      <td>Edit</td>
+      <td>Delete</td>
     </tr>
     <?php } ?>
 
   </tbody>
 </table>
+</div>
+</div>
 </div>
 
 

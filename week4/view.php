@@ -68,8 +68,10 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
       <td><?=$js ?></td>
       <td><?=$val['Tgl_Surat']?></td>
       <td><?=$val['Ttd_Surat']?></td>
-      <td>Edit</td>
-      <td>Delete</td>
+      <td>
+        <a href="edit.php?id=<?= $val['id'] ?>" class="badge bg-primary text-white p-2 text-decoration-none" >Edit</a>
+        <a href="#" class="badge bg-danger text-white p-2 text-decoration-none" >Delete</a>
+     </td>
     </tr>
     <?php } ?>
 

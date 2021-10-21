@@ -4,6 +4,7 @@ $username = "root" ;
 $password = "";
 $database = "db_Surat";
 
+//Buat koneksi
 $con = mysqli_connect('localhost' , $username , $password , $database);
 $result = mysqli_query($con , "SELECT * FROM tbl_surat");
 
@@ -20,7 +21,7 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
     
     <head>
 
-    <title>View</title>
+    <title>add</title>
     <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
 
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -47,9 +48,9 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
                        <small>Jenis Surat</small>
                        <select name="Jenis_Surat" id="Jenis_Surat" class="form-control">
                           <option value="">Silahkan Pilih....</option>
-                          <option value="Surat Keputusan">Surat Keputusan</option>
-                          <option value="Surat Pernyataan">Surat Pernyataan</option>
-                          <option value="Surat Peminjaman">Surat Peminjaman</option>
+                          <option value="1">Surat Keputusan</option>
+                          <option value="2">Surat Pernyataan</option>
+                          <option value="3">Surat Peminjaman</option>
                       </select>
                     </div>
                 </div>
@@ -79,7 +80,7 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
                 </div>
 
                   <div class="col-lg-12 mt-4">
-                    <button type="submit" class="btn btn-primary text-white">Add</button>
+                    <button type="submit" name="submit" class="btn btn-primary text-white">Add </button>
                     <a href="view.php" class="btn btn-danger">Cancel</a>
                   </div>
               </div>
@@ -94,11 +95,16 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
         $Tgl_Surat = $_POST['Tgl_Surat'];
         $Ttd_Surat = $_POST['Ttd_Surat'];
         $Ttd_Menyetui = $_POST['Ttd_Menyetujui'];
-        $Ttd_Mengetahui = $_POST['Tgl_Mengetehui'];
+        $Ttd_Mengetahui = $_POST['Ttd_Mengetahui'];
 
+        //INSERT USER DATA INTO TABLE 
+        $result =mysqli_query($con, "INSERT INTO `tbl_surat` (`id`, `No_Surat`, `Jenis_Surat`, `Tgl_Surat`, `Ttd_Surat`, `Ttd_Mengetahui`, `Ttd_Menyetujui`) VALUES 
+        (NULL, '$No_Surat','$Jenis_Surat','$Tgl_Surat','$Ttd_Surat','$Ttd_Menyetui','$Ttd_Mengetahui')");
+      
 
-        $result =mysqli_query($mysqli, "INSERT INTO Tbl_Surat (ID,No_Surat,Jenis_Surat,Ttd_Surat,Ttd_Menyetujui,Ttd_Mengetahui) VALUES('', '$No_Surat','$Jenis_Surat','$Tgl_Surat','$Tgl_Surat','$Ttd_Menyetui','$Ttd_Mengetahui')");
-      echo "User added succesfully. <ahref='view.php'>List Surat </a>";  
+     
+     //ECHO MASSAGE WHEN USER ADDED
+     echo "User added succesfully. <ahref='view.php'>List Surat </a>";  
     
   }
   ?>

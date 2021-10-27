@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 $username = "root" ;
 $password = "";
 $database = "db_Surat";
@@ -49,10 +49,10 @@ else if($data["Jenis_Surat"]== '3'){
             <div class="h3 text-center">Edit surat</div>
           </div>
           <div class="card-body">
-              <form action="edit.php" method="post">
+              <form action="edit.php?id=<?= $val['id'] ?>" method="post">
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="hidden" value="<?=$data['id']?>">
+                  <input type="hidden" value="<?=$data['id']?>" name="id">
                     <div class="form-group">
                       <small>Nomor Surat</small>
                       <input type="text" name="No_Surat" id="No_Surat" class="form-control" placeholder="SK-2021-09001" value="<?= $data['No_Surat']?>">
@@ -95,7 +95,7 @@ else if($data["Jenis_Surat"]== '3'){
                 </div>
 
                   <div class="col-lg-12 mt-4">
-                    <button type="submit" name="submit" class="btn btn-primary text-white">Add </button>
+                    <button type="submit" name="update" class="btn btn-primary text-white">Update </button>
                     <a href="view.php" class="btn btn-danger">Cancel</a>
                   </div>
               </div>
@@ -104,7 +104,7 @@ else if($data["Jenis_Surat"]== '3'){
         </div>
       </div>
   <?php
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['update'])) {
         $id = $_POST['id'];
         $No_Surat = $_POST['No_Surat'];
         $Jenis_Surat = $_POST['Jenis_Surat'];
@@ -114,11 +114,11 @@ else if($data["Jenis_Surat"]== '3'){
         $Ttd_Mengetahui = $_POST['Ttd_Mengetahui'];
 
       //INSERT USER DATA INTO TABLE 
-        $result =mysqli_query($con, "UPDATE `tbl_surat` SET `id`= '$id', `No_Surat` = '$No_Surat', `Jenis_Surat` = '$Jenis_Surat' , `Tgl_Surat` = '$Tgl_Surat' ,
-         `Ttd_Surat` = '$Ttd_Surat', `Ttd_Mengetahui` = '$Ttd_Mengetahui', `Ttd_Menyetujui` = '$Ttd_Menyetui' 
-         WHERE 'id' = '$id' ");
+        $result =mysqli_query($con, "UPDATE tbl_surat SET id= '$id', No_Surat = '$No_Surat', Jenis_Surat = '$Jenis_Surat' , `Tgl_Surat` = '$Tgl_Surat' ,
+         Ttd_Surat = '$Ttd_Surat', Ttd_Mengetahui = '$Ttd_Mengetahui', Ttd_Menyetujui = '$Ttd_Menyetui' 
+         WHERE id = '$id' ");
       
-
+      header("location:view.php");
      
      //ECHO MASSAGE WHEN USER ADDED
      echo "Surat Update succesfully. <ahref='view.php'>List Surat </a>";  

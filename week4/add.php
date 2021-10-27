@@ -101,7 +101,7 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
         $result =mysqli_query($con, "INSERT INTO `tbl_surat` (`id`, `No_Surat`, `Jenis_Surat`, `Tgl_Surat`, `Ttd_Surat`, `Ttd_Mengetahui`, `Ttd_Menyetujui`) VALUES 
         (NULL, '$No_Surat','$Jenis_Surat','$Tgl_Surat','$Ttd_Surat','$Ttd_Menyetui','$Ttd_Mengetahui')");
       
-
+      header("Location:view.php");
      
      //ECHO MASSAGE WHEN USER ADDED
      echo "User added succesfully. <ahref='view.php'>List Surat </a>";  

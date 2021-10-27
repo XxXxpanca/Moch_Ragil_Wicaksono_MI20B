@@ -49,9 +49,10 @@ else if($data["Jenis_Surat"]== '3'){
             <div class="h3 text-center">Edit surat</div>
           </div>
           <div class="card-body">
-              <form action="edit.php?id=<?=$data['id']?>" method="post">
+              <form action="edit.php" method="post">
               <div class="row">
                 <div class="col-lg-6">
+                  <input type="hidden" value="<?=$data['id']?>">
                     <div class="form-group">
                       <small>Nomor Surat</small>
                       <input type="text" name="No_Surat" id="No_Surat" class="form-control" placeholder="SK-2021-09001" value="<?= $data['No_Surat']?>">
@@ -104,6 +105,7 @@ else if($data["Jenis_Surat"]== '3'){
       </div>
   <?php
     if(isset($_POST['submit'])) {
+        $id = $_POST['id'];
         $No_Surat = $_POST['No_Surat'];
         $Jenis_Surat = $_POST['Jenis_Surat'];
         $Tgl_Surat = $_POST['Tgl_Surat'];

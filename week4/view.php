@@ -29,10 +29,40 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
 
     <body>
       <div class="container">
+        <?php 
+        $pesan = $_GET['pesan'];
+        $frm = $_GET['frm'];
+        // echo $pesan;
+          if ($pesan=='success' && $frm =='del'){
+        ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Berhasil !!!</strong> Selamat Anda Berhasil Ditambahkan.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <?php
+          }else if ($pesan=='success' && $frm =='add'){
+      ?>
+      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Selamat !!!</strong> Selamat Anda Berhasil Ditambahkan.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <?php
+          }else if ($pesan=='success' && $frm =='edit'){
+      ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Selamat !!!</strong> Anda Berhasil Merubah data.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        <?php
+          }
+        ?>
+
         <div class="card">
           <div class="card-header bg-white text-uppercase">
-            <div class="h3 text-center">LIST MAHASISWA</div>
-            <a href="add.php" class="btn bg-warning float-end text-black p-2 text-decoration-none" >Add Surat</a>
+            <div class="h3 text-center">Mahasiswa</div>
+            <a href="add.php" class="btn bg-warning float-end text-black p-2 text-decoration-none" >Add</a>
           </div>
           <div class="card-body">
 

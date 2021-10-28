@@ -6,7 +6,7 @@ $database = "db_Surat";
 
 //Buat koneksi
 $con = mysqli_connect('localhost' , $username , $password , $database);
-$result = mysqli_query($con , "SELECT * FROM tbl_surat");
+$result = mysqli_query($con , "SELECT * FROM tbl_jenis_surat");
 
 
 // $row = [];
@@ -30,10 +30,21 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
 
     <body>
       <div class="container">
+        <?php
+        $tambah = $_GET['tambah'];
+        if ($pesan=='ditambahkan'){
+        ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Tambahkan !!! </strong> Silahkan isi Data Anda
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="card">
           <div class="card-header bg-white text-uppercase">
             <div class="h3 text-center">Tambah Surat</div>
           </div>
+          <?php
+          }
+          ?>
           <div class="card-body">
               <form action="#" method="post">
               <div class="row">
@@ -48,9 +59,14 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
                        <small>Jenis Surat</small>
                        <select name="Jenis_Surat" id="Jenis_Surat" class="form-control">
                           <option value="">Silahkan Pilih....</option>
-                          <option value="1">Surat Keputusan</option>
-                          <option value="2">Surat Pernyataan</option>
-                          <option value="3">Surat Peminjaman</option>
+                          <?php
+                          foreach ($result as $val) {                            
+                          ?>
+                          <option value="<?=$val['id_js']?>"> <?=$val[
+                            'jenis_surat']?> </option>
+                          <?php
+                            }
+                          ?>
                       </select>
                     </div>
                 </div>
@@ -101,7 +117,7 @@ $result = mysqli_query($con , "SELECT * FROM tbl_surat");
         $result =mysqli_query($con, "INSERT INTO `tbl_surat` (`id`, `No_Surat`, `Jenis_Surat`, `Tgl_Surat`, `Ttd_Surat`, `Ttd_Mengetahui`, `Ttd_Menyetujui`) VALUES 
         (NULL, '$No_Surat','$Jenis_Surat','$Tgl_Surat','$Ttd_Surat','$Ttd_Menyetui','$Ttd_Mengetahui')");
       
-      header("Location:view.php");
+      header("Location:view.php?pesan=success");
      
      //ECHO MASSAGE WHEN USER ADDED
      echo "User added succesfully. <ahref='view.php'>List Surat </a>";  

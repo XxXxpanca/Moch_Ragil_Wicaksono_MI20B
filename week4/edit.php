@@ -118,7 +118,7 @@ else if($data["Jenis_Surat"]== '3'){
          Ttd_Surat = '$Ttd_Surat', Ttd_Mengetahui = '$Ttd_Mengetahui', Ttd_Menyetujui = '$Ttd_Menyetui' 
          WHERE id = '$id' ");
       
-      header("location:view.php");
+      header("location:view.php?pesan=success");
      
      //ECHO MASSAGE WHEN USER ADDED
      echo "Surat Update succesfully. <ahref='view.php'>List Surat </a>";  
